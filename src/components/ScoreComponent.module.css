@@ -1,0 +1,38 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    padding: 10px; /* Adds padding to avoid touching the edges on smaller screens */
+}
+
+.restartButton {
+    padding: 12px 24px; /* Slightly larger padding for better touch targets */
+    font-size: 1em; /* Maintains size but could be adjusted based on screen size */
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+    width: 80%; /* Makes button wider on smaller screens for easier access */
+    max-width: 300px; /* Limits button size on larger screens */
+}
+
+.restartButton:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 600px) {
+    .restartButton {
+        padding: 15px 30px; /* Larger padding for easier interaction on mobile */
+        font-size: 1.2em; /* Larger text to enhance readability on small devices */
+    }
+
+    .container {
+        padding: 20px; /* Increased padding to maintain aesthetics on small screens */
+    }
+}

@@ -1,0 +1,64 @@
+/* General styles for the container, question, and options */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    padding: 20px;
+}
+
+.question {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.options {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 5px 0;
+    background-color: #FFF; /* Optional: set background color for the option */
+}
+
+/* Styling for the circle indicator */
+.circle {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    border: 2px solid #007BFF;
+    background-color: #ffffff; /* White background when not selected */
+}
+
+.circleSelected {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    border: 2px solid #007BFF;
+    background-color: #007BFF; /* White background when not selected */
+}
+
+/* Styles for the Next button */
+.nextButton {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.nextButton:disabled {
+    background-color: #ccc;
+}
