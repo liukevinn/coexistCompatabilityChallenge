@@ -1,18 +1,23 @@
 import React from 'react';
 import styles from './LandingPageComponent.module.css';
 import logo from '../pictures/68.Click-here.svg';
+
 const LandingPageComponent = ({ onStartQuiz }) => {
     return (
         <div className={styles.container}>
             <div className={styles.content}>
-                <h1>coexist presents: what’s your homekeeping personality?</h1>
-                <p>Lorem ipsum dolor sit amet. Ex molestiae unde eos cumque provident eum voluptas fugiat id amet nisi et error alias et dolorum dolores aut error debitis. </p>
+                <h1>
+                    <span className={styles.coexist}>coexist</span> presents:
+                </h1>
+                <h2>what’s your homekeeping personality?</h2>
+                <p>
+                    welcome to the coexist compatibility challenge! ready to find out if you're a tidiness guru or a laid-back lounger? this fun little quiz will help you uncover your unique home management style and learn about your compatibility with your partner. let's dive in and see how your quirks and habits can blend to create a harmonious (and maybe even spotless) home life.
+                </p>
             </div>
             <img src={logo} alt="Podcast Logo" />
             <div className={styles.footer}>
                 <button onClick={onStartQuiz} className={styles.startButton}>Start Quiz</button>
             </div>
-            
         </div>
     );
 };
