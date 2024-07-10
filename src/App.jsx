@@ -8,10 +8,10 @@ const questions = [
     {
         text: "What is the capital of France?",
         options: ["Paris", "Berlin", "Madrid", "London"],
-        points: [4, 0, 0, 0]  // Points associated with each option
+        points: [0, 4, 0, 0]  // Points associated with each option
     },
     {
-        text: "What is the largest planet in our solar system?",
+        text: "What is the largest planet in our solar system?", //randomize the order of questions
         options: ["Jupiter", "Mars", "Earth", "Venus"],
         points: [4, 0, 0, 0]
     },

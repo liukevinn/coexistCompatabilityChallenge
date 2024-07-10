@@ -7,17 +7,19 @@ const LandingPageComponent = ({ onStartQuiz }) => {
         <div className={styles.container}>
             <div className={styles.content}>
                 <h1>
-                    <span className={styles.coexist}>coexist</span> presents:
+                    <span className={styles.coexist}>coexist</span> 
+                    <span className={styles.coexist}></span><span className={styles.presents}>  presents:</span>
                 </h1>
                 <h2>what’s your homekeeping personality?</h2>
                 <p>
                     welcome to the coexist compatibility challenge! ready to find out if you're a tidiness guru or a laid-back lounger? this fun little quiz will help you uncover your unique home management style and learn about your compatibility with your partner. let's dive in and see how your quirks and habits can blend to create a harmonious (and maybe even spotless) home life.
                 </p>
             </div>
-            <img src={logo} alt="Podcast Logo" />
+            <img src={logo} alt="Podcast Logo" className={styles.logo} />
             <div className={styles.footer}>
-                <button onClick={onStartQuiz} className={styles.startButton}>Start Quiz</button>
+                <button onClick={onStartQuiz} className={styles.startButton}>start quiz</button>
             </div>
+            <div className={styles.semiCircle}></div>
         </div>
     );
 };
