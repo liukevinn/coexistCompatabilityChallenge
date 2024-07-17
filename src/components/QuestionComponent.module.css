@@ -2,9 +2,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between; /* Distributes the space between items */
+    justify-content: space-between;
     height: 100vh;
-    padding: 2vh; /* Reduced padding to save space */
+    padding: 2vh;
     box-sizing: border-box;
     text-align: center;
 }
@@ -15,7 +15,7 @@
     align-items: center;
     width: 100%;
     max-width: 80vh;
-    margin-bottom: 1vh; /* Reduced margin to save space */
+    margin-bottom: 1vh;
 }
 
 .backButton {
@@ -49,25 +49,25 @@
     align-items: center;
     justify-content: center;
     background-color: #F9F9F9;
-    padding: 2vh; /* Reduced padding to save space */
-    border-radius: 2vh;
+    padding: 2vh;
+    border-radius: 4vh;
     box-shadow: 0 0.4vh 0.8vh rgba(0, 0, 0, 0.1);
     width: 80%;
     max-width: 60vh;
-    margin-bottom: 2vh; /* Reduced margin to save space */
+    margin-bottom: 2vh;
     text-align: center;
-    flex-grow: 1; /* Allows the question box to grow and fill available space */
+    flex-grow: 1;
 }
 
 .questionImage {
     max-width: 100%;
     height: auto;
-    margin-bottom: 1vh; /* Reduced margin to save space */
+    margin-bottom: 1vh;
 }
 
 .question {
-    font-size: 2.5vh; /* Reduced font size to save space */
-    margin-bottom: 1vh; /* Reduced margin to save space */
+    font-size: 2.5vh;
+    margin-bottom: 1vh;
     font-family: "Lexend", sans-serif;
 }
 
@@ -76,46 +76,60 @@
     max-width: 60vh;
     display: flex;
     flex-direction: column;
-    margin-top: 1vh; /* Added margin to separate options from question */
+    margin-top: 1vh;
 }
-
 .option {
     position: relative;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1.5vh; /* Reduced padding to save space */
+    padding: 1.5vh;
     cursor: pointer;
     border: 0.1vh solid #ccc;
-    border-radius: 2vh;
-    margin: 1vh 0; /* Reduced margin to save space */
+    border-radius: 5vh; /* Increased border-radius for curvy boxes */
+    margin: 1vh 0;
     background-color: #FFF;
     font-size: 2vh;
     font-family: "Lexend", sans-serif;
     transition: background-color 0.3s ease;
-    text-transform: none; /* Ensure text is not in all caps */
-    color: black; /* Ensure text color is black */
+    text-transform: none;
+    color: black;
+    outline: 0.1vh solid #706E9A; /* Added outline to the option boxes */
 }
+
 
 .optionBackground {
     position: absolute;
     top: 0;
     left: 0;
     height: 100%;
-    background-color: #CCDBE6; /* Progress bar color */
+    background-color: #CCDBE6;
     transition: width 0.5s ease-in-out;
     z-index: 0;
+    border-radius: 5vh;
+    
+    
 }
 
-.optionText, .responseText {
-    z-index: 1; /* Ensures text stays on top of the background */
+.optionText {
+    z-index: 1;
     position: relative;
     width: 100%;
     display: flex;
     justify-content: space-between;
-    text-transform: none; /* Ensure text is not in all caps */
-    color: black; /* Ensure text color is black */
+    text-transform: none;
+    color: black;
+}
+
+.responseData {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1.5vh;
+    font-size: 1.5vh;
+    color: black;
+    margin: 1vh 0;
 }
 
 .nextButton {
@@ -126,7 +140,7 @@
     border: none;
     border-radius: 5vh;
     cursor: pointer;
-    margin-top: 2vh; /* Reduced margin to save space */
+    margin-top: 2vh;
     transition: background-color 0.3s ease;
 }
 

@@ -10,6 +10,7 @@ const QuestionComponent = ({ question, onAnswerSelected, onNextQuestion, onPrevi
         percentage: 0,
         selected: false
     })));
+    const [hasSelected, setHasSelected] = useState(false);
 
     useEffect(() => {
         setOptions(question.options.map((option, index) => ({
@@ -19,12 +20,14 @@ const QuestionComponent = ({ question, onAnswerSelected, onNextQuestion, onPrevi
             percentage: 0,
             selected: false
         })));
+        setHasSelected(false);
     }, [question]);
 
     const handleOptionSelect = (id, points) => {
         const newOptions = options.map(option =>
             option.id === id ? { ...option, count: option.count + 1, selected: true } : option
         );
+        setHasSelected(true);
         updatePercentages(newOptions);
         onAnswerSelected(question.options[id], points);
     };
@@ -41,11 +44,9 @@ const QuestionComponent = ({ question, onAnswerSelected, onNextQuestion, onPrevi
     return (
         <Box className={styles.container}>
             <Box className={styles.header}>
-             
-                    <Button onClick={onPreviousQuestion} className={styles.backButton}>
-                        back
-                    </Button>
-          
+                <Button onClick={onPreviousQuestion} className={styles.backButton}>
+                    back
+                </Button>
                 <Typography className={styles.fraction}>
                     {question.questionFraction}
                 </Typography>
@@ -66,31 +67,36 @@ const QuestionComponent = ({ question, onAnswerSelected, onNextQuestion, onPrevi
                 </Typography>
             </Box>
             <Box className={styles.options}>
-                {options.map(option => (
-                    <Button
-                        key={option.id}
-                        onClick={() => handleOptionSelect(option.id, question.points[option.id])}
-                        className={styles.option}
-                        disabled={option.selected}
-                    >   
-                        <div 
-                            className={styles.optionBackground}
-                            style={{ width: `${option.percentage}%` }}
-                        ></div>
-                        <Box className={styles.optionText}>
-                            <span>{option.text}</span>
-                            {option.selected && (
-                                <span className={styles.responseText}>{option.percentage}%, {option.count} responses</span>
+                {options.map((option) => (
+                    <React.Fragment key={option.id}>
+                        <Button
+                            onClick={() => handleOptionSelect(option.id, question.points[option.id])}
+                            className={styles.option}
+                            disabled={hasSelected}
+                        >
+                            <div 
+                                className={styles.optionBackground}
+                                style={{ width: hasSelected ? `${option.percentage}%` : '0%' }}
+                            ></div>
+                            <Box className={styles.optionText}>
+                                <span>{option.text}</span>
+                            </Box>
+                        </Button>
+                        <Box className={styles.responseData}>
+                            {hasSelected && (
+                                <Typography variant="body2">
+                                    {`${option.percentage}% (${option.count} responses)`}
+                                </Typography>
                             )}
                         </Box>
-                    </Button>
+                    </React.Fragment>
                 ))}
             </Box>
             <Button
                 variant="contained"
                 onClick={onNextQuestion}
                 className={styles.nextButton}
-                disabled={options.every(option => !option.selected)}
+                disabled={!hasSelected}
             >
                 Next
             </Button>
