@@ -41,11 +41,11 @@ const QuestionComponent = ({ question, onAnswerSelected, onNextQuestion, onPrevi
     return (
         <Box className={styles.container}>
             <Box className={styles.header}>
-                {question.questionFraction.split('/')[0] > 1 && (
+             
                     <Button onClick={onPreviousQuestion} className={styles.backButton}>
                         back
                     </Button>
-                )}
+          
                 <Typography className={styles.fraction}>
                     {question.questionFraction}
                 </Typography>
@@ -61,6 +61,7 @@ const QuestionComponent = ({ question, onAnswerSelected, onNextQuestion, onPrevi
                     <img src={question.imageUrl} alt="Question" className={styles.questionImage} />
                 )}
                 <Typography variant="h5" className={styles.question}>
+                    <p>how do you prefer to...</p>
                     {question.text}
                 </Typography>
             </Box>
@@ -71,7 +72,7 @@ const QuestionComponent = ({ question, onAnswerSelected, onNextQuestion, onPrevi
                         onClick={() => handleOptionSelect(option.id, question.points[option.id])}
                         className={styles.option}
                         disabled={option.selected}
-                    >
+                    >   
                         <div 
                             className={styles.optionBackground}
                             style={{ width: `${option.percentage}%` }}

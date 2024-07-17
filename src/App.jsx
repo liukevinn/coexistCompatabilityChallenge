@@ -7,7 +7,7 @@ import pic1 from '/Users/kevinliu/Desktop/coexist compatability challenge/src/pi
 
 const questions = [
     {
-        text: "how do you prefer to… handle grocery shopping?",
+        text: "handle grocery shopping?",
         options: ["plan meals ahead and stick to a categorized shopping list", 
             "bulk buy non-perishables & frozen food at discounted rates",
              "buy nurturing food for cozy homemade meals",
