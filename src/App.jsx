@@ -3,76 +3,74 @@ import './App.css';
 import LandingPageComponent from './components/LandingPageComponent.jsx';
 import QuestionComponent from './components/QuestionComponent';
 import ScoreComponent from './components/ScoreComponent';
+import pic1 from '/Users/kevinliu/Desktop/coexist compatability challenge/src/pictures/265.Shopping-With-My-Dog.svg';
 
 const questions = [
     {
-        text: "What is the capital of France?",
-        options: ["Paris", "Berlin", "Madrid", "London"],
-        points: [0, 4, 0, 0]  // Points associated with each option
+        text: "how do you prefer to… handle grocery shopping?",
+        options: ["plan meals ahead and stick to a categorized shopping list", 
+            "bulk buy non-perishables & frozen food at discounted rates",
+             "buy nurturing food for cozy homemade meals",
+              "explore different shops and make spontaneous grocery runs"],
+        points: [4, 2, 3, 1],  // Points associated with each option
+        imageUrl: pic1,
+        questionFraction: "1/3"
     },
+
     {
-        text: "What is the largest planet in our solar system?", //randomize the order of questions
+        text: "What is the largest planet in our solar system?",
         options: ["Jupiter", "Mars", "Earth", "Venus"],
-        points: [4, 0, 0, 0]
+        points: [4, 0, 0, 0],
+        questionFraction: "2/3"
     },
     {
         text: "What element does 'O' represent on the periodic table?",
         options: ["Oxygen", "Gold", "Iron", "Calcium"],
-        points: [4, 0, 0, 0] 
+        points: [4, 0, 0, 0],
+        questionFraction: "3/3"
     }
-]
+];
+
 const App = () => {
-  const [quizStarted, setQuizStarted] = useState(false);
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [score, setScore] = useState(0);
-  const [quizFinished, setQuizFinished] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(null);  // State to track selected option
+    const [quizStarted, setQuizStarted] = useState(false);
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+    const [score, setScore] = useState(0);
+    const [quizFinished, setQuizFinished] = useState(false);
 
-  const startQuiz = () => {
-      setQuizStarted(true);
-      setCurrentQuestionIndex(0);
-      setScore(0);
-      setQuizFinished(false);
-      setSelectedOption(null);  // Reset selected option when quiz starts
-  };
+    const handleAnswerSelected = (option, points) => {
+        setScore(prevScore => prevScore + points);
+    };
 
-  const handleAnswerSelected = (option, points) => {
-      setScore(prevScore => prevScore + points);
-  };
+    const handleNextQuestion = () => {
+        if (currentQuestionIndex + 1 < questions.length) {
+            setCurrentQuestionIndex(currentQuestionIndex + 1);
+        } else {
+            setQuizFinished(true);
+        }
+    };
 
-  const handleNextQuestion = () => {
-      const nextQuestionIndex = currentQuestionIndex + 1;
-      if (nextQuestionIndex < questions.length) {
-          setCurrentQuestionIndex(nextQuestionIndex);
-          setSelectedOption(null);  // Reset selected option when moving to next question
-      } else {
-          setQuizFinished(true);
-          setQuizStarted(false);
-      }
-  };
+    const handlePreviousQuestion = () => {
+        if (currentQuestionIndex > 0) {
+            setCurrentQuestionIndex(currentQuestionIndex - 1);
+        }
+    };
 
-  const resetSelection = () => {
-      setSelectedOption(null);
-  };
-
-  return (
-      <div>
-          {!quizStarted ? (
-              quizFinished ? (
-                  <ScoreComponent score={score} onStartQuiz={startQuiz} />
-              ) : (
-                  <LandingPageComponent onStartQuiz={startQuiz} />
-              )
-          ) : (
-              <QuestionComponent 
-                  question={questions[currentQuestionIndex]} 
-                  onAnswerSelected={handleAnswerSelected} 
-                  onNextQuestion={handleNextQuestion}
-                  resetSelection={resetSelection}
-              />
-          )}
-      </div>
-  );
+    return (
+        <div>
+            {!quizStarted ? (
+                <LandingPageComponent onStartQuiz={() => setQuizStarted(true)} />
+            ) : quizFinished ? (
+                <ScoreComponent score={score} onStartQuiz={() => setQuizStarted(false)} />
+            ) : (
+                <QuestionComponent 
+                    question={questions[currentQuestionIndex]} 
+                    onAnswerSelected={handleAnswerSelected} 
+                    onNextQuestion={handleNextQuestion}
+                    onPreviousQuestion={handlePreviousQuestion}
+                />
+            )}
+        </div>
+    );
 }
 
 export default App;

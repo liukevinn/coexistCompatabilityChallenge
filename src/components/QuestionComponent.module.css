@@ -1,109 +1,121 @@
 .container {
-    position: relative;
-    background-color: #FFFFFF; /* White background */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between; /* Distributes the space between items */
     height: 100vh;
+    padding: 2vh; /* Reduced padding to save space */
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 80vh;
+    margin-bottom: 1vh; /* Reduced margin to save space */
+}
+
+.backButton {
+    left: 1vh;
+    font-size: 2vh;
+    text-transform: none;
+    color: #706E9A;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.fraction {
+    font-size: 2vh;
+    text-align: center;
+}
+
+.coexistButton {
+    right: 1vh;
+    font-size: 2vh;
+    text-transform: none;
+    color: #706E9A;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.questionBox {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    padding: 5vh;
-    box-sizing: border-box;
-}
-
-.header {
-    position: absolute;
-    top: 2vh;
-    left: 2vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 96%;
-}
-
-.header .backButton {
-    font-size: 2vh;
-    color: #007BFF;
-    cursor: pointer;
-    background: none;
-    border: none;
-}
-
-.header .progress {
-    font-size: 2vh;
-    color: #000;
-}
-
-.header .title {
-    font-size: 2.5vh;
-    color: #706E9A;
-    font-weight: bold;
-}
-
-.questionBox {
     background-color: #F9F9F9;
-    padding: 4vh;
+    padding: 2vh; /* Reduced padding to save space */
     border-radius: 2vh;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.4vh 0.8vh rgba(0, 0, 0, 0.1);
     width: 80%;
     max-width: 60vh;
-    text-align: left;
-    margin-bottom: 5vh;
+    margin-bottom: 2vh; /* Reduced margin to save space */
+    text-align: center;
+    flex-grow: 1; /* Allows the question box to grow and fill available space */
+}
+
+.questionImage {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 1vh; /* Reduced margin to save space */
 }
 
 .question {
-    font-size: 3vh;
-    margin-bottom: 3vh;
+    font-size: 2.5vh; /* Reduced font size to save space */
+    margin-bottom: 1vh; /* Reduced margin to save space */
     font-family: "Lexend", sans-serif;
 }
 
 .options {
     width: 100%;
+    max-width: 60vh;
     display: flex;
     flex-direction: column;
+    margin-top: 1vh; /* Added margin to separate options from question */
 }
 
 .option {
+    position: relative;
+    overflow: hidden;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 2vh;
+    justify-content: center;
+    padding: 1.5vh; /* Reduced padding to save space */
     cursor: pointer;
-    border: 1px solid #ccc;
+    border: 0.1vh solid #ccc;
     border-radius: 2vh;
-    margin: 1vh 0;
+    margin: 1vh 0; /* Reduced margin to save space */
     background-color: #FFF;
     font-size: 2vh;
     font-family: "Lexend", sans-serif;
     transition: background-color 0.3s ease;
+    text-transform: none; /* Ensure text is not in all caps */
+    color: black; /* Ensure text color is black */
 }
 
-.option:hover {
-    background-color: #F0F0F0;
+.optionBackground {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: #CCDBE6; /* Progress bar color */
+    transition: width 0.5s ease-in-out;
+    z-index: 0;
 }
 
-.optionSelected {
-    background-color: #DDEBFF;
-    border: 1px solid #007BFF;
-}
-
-.progressContainer {
-    width: 80%;
-    display: flex;
-    align-items: center;
-    margin-left: 2vh;
-}
-
-.progressBar {
+.optionText, .responseText {
+    z-index: 1; /* Ensures text stays on top of the background */
+    position: relative;
     width: 100%;
-    height: 1vh;
-    border-radius: 5vh;
-    background-color: #D3D3D3;
-}
-
-.responseText {
-    margin-left: 2vh;
-    font-size: 2vh;
+    display: flex;
+    justify-content: space-between;
+    text-transform: none; /* Ensure text is not in all caps */
+    color: black; /* Ensure text color is black */
 }
 
 .nextButton {
@@ -114,7 +126,7 @@
     border: none;
     border-radius: 5vh;
     cursor: pointer;
-    margin-top: 3vh;
+    margin-top: 2vh; /* Reduced margin to save space */
     transition: background-color 0.3s ease;
 }
 

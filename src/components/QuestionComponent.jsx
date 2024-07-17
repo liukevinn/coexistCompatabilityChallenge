@@ -1,70 +1,99 @@
 import React, { useState, useEffect } from 'react';
-import LinearProgress from '@mui/material/LinearProgress';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
+import { Box, Typography, Button } from '@mui/material';
 import styles from './QuestionComponent.module.css';
 
-const QuestionComponent = ({ question, onAnswerSelected, onNextQuestion }) => {
-    const [selectedOption, setSelectedOption] = useState(null);
-    const [totalResponses, setTotalResponses] = useState(0);
-    const [optionResponses, setOptionResponses] = useState([]);
+const QuestionComponent = ({ question, onAnswerSelected, onNextQuestion, onPreviousQuestion }) => {
+    const [options, setOptions] = useState(question.options.map((option, index) => ({
+        id: index,
+        text: option,
+        count: 0,
+        percentage: 0,
+        selected: false
+    })));
 
     useEffect(() => {
-        setSelectedOption(null);
-        const total = question.options.reduce((sum, option) => sum + option.responses, 0);
-        setTotalResponses(total);
-        setOptionResponses(question.options.map(option => option.responses));
+        setOptions(question.options.map((option, index) => ({
+            id: index,
+            text: option,
+            count: 0,
+            percentage: 0,
+            selected: false
+        })));
     }, [question]);
 
-    const handleOptionSelect = (option, index) => {
-        const newResponses = [...optionResponses];
-        newResponses[index] += 1;
-        setOptionResponses(newResponses);
-        setTotalResponses(totalResponses + 1);
-        setSelectedOption(index);
-        onAnswerSelected(option, question.points[index]);
+    const handleOptionSelect = (id, points) => {
+        const newOptions = options.map(option =>
+            option.id === id ? { ...option, count: option.count + 1, selected: true } : option
+        );
+        updatePercentages(newOptions);
+        onAnswerSelected(question.options[id], points);
+    };
+
+    const updatePercentages = (newOptions) => {
+        const total = newOptions.reduce((acc, option) => acc + option.count, 0);
+        const updatedOptions = newOptions.map(option => ({
+            ...option,
+            percentage: total > 0 ? (option.count / total * 100).toFixed(2) : 0
+        }));
+        setOptions(updatedOptions);
     };
 
     return (
-        <div className={styles.container}>
-            <div className={styles.questionBox}>
+        <Box className={styles.container}>
+            <Box className={styles.header}>
+                {question.questionFraction.split('/')[0] > 1 && (
+                    <Button onClick={onPreviousQuestion} className={styles.backButton}>
+                        back
+                    </Button>
+                )}
+                <Typography className={styles.fraction}>
+                    {question.questionFraction}
+                </Typography>
+                <Button 
+                    className={styles.coexistButton} 
+                    onClick={() => window.location.href='https://www.getcoexist.com/'}
+                >
+                    coexist
+                </Button>
+            </Box>
+            <Box className={styles.questionBox}>
+                {question.imageUrl && (
+                    <img src={question.imageUrl} alt="Question" className={styles.questionImage} />
+                )}
                 <Typography variant="h5" className={styles.question}>
                     {question.text}
                 </Typography>
-                <div className={styles.options}>
-                    {question.options.map((option, index) => (
-                        <Box
-                            key={index}
-                            className={`${styles.option} ${index === selectedOption ? styles.optionSelected : ''}`}
-                            onClick={() => handleOptionSelect(option, index)}
-                        >
-                            <Box className={styles.optionText}>
-                                {option}
-                            </Box>
-                            {selectedOption !== null && (
-                                <Box className={styles.progressContainer}>
-                                    <LinearProgress
-                                        variant="determinate"
-                                        value={(optionResponses[index] / totalResponses) * 100}
-                                        className={styles.progressBar}
-                                    />
-                                    <Typography variant="body2" className={styles.responseText}>
-                                        {((optionResponses[index] / totalResponses) * 100).toFixed(1)}%, {optionResponses[index]} responses
-                                    </Typography>
-                                </Box>
+            </Box>
+            <Box className={styles.options}>
+                {options.map(option => (
+                    <Button
+                        key={option.id}
+                        onClick={() => handleOptionSelect(option.id, question.points[option.id])}
+                        className={styles.option}
+                        disabled={option.selected}
+                    >
+                        <div 
+                            className={styles.optionBackground}
+                            style={{ width: `${option.percentage}%` }}
+                        ></div>
+                        <Box className={styles.optionText}>
+                            <span>{option.text}</span>
+                            {option.selected && (
+                                <span className={styles.responseText}>{option.percentage}%, {option.count} responses</span>
                             )}
                         </Box>
-                    ))}
-                </div>
-                <button
-                    className={styles.nextButton}
-                    onClick={onNextQuestion}
-                    disabled={selectedOption === null}
-                >
-                    Next
-                </button>
-            </div>
-        </div>
+                    </Button>
+                ))}
+            </Box>
+            <Button
+                variant="contained"
+                onClick={onNextQuestion}
+                className={styles.nextButton}
+                disabled={options.every(option => !option.selected)}
+            >
+                Next
+            </Button>
+        </Box>
     );
 };
 
