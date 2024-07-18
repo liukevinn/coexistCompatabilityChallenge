@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Typography, Button } from '@mui/material';
+import Header from '/Users/kevinliu/Desktop/coexist compatability challenge/src/components/Header.jsx'; // Import the new Header component
 import styles from './QuestionComponent.module.css';
 
 const QuestionComponent = ({ question, onAnswerSelected, onNextQuestion, onPreviousQuestion }) => {
@@ -29,7 +30,7 @@ const QuestionComponent = ({ question, onAnswerSelected, onNextQuestion, onPrevi
         );
         setHasSelected(true);
         updatePercentages(newOptions);
-        onAnswerSelected(question.options[id], points);
+        onAnswerSelected(points);
     };
 
     const updatePercentages = (newOptions) => {
@@ -43,20 +44,11 @@ const QuestionComponent = ({ question, onAnswerSelected, onNextQuestion, onPrevi
 
     return (
         <Box className={styles.container}>
-            <Box className={styles.header}>
-                <Button onClick={onPreviousQuestion} className={styles.backButton}>
-                    back
-                </Button>
-                <Typography className={styles.fraction}>
-                    {question.questionFraction}
-                </Typography>
-                <Button 
-                    className={styles.coexistButton} 
-                    onClick={() => window.location.href='https://www.getcoexist.com/'}
-                >
-                    coexist
-                </Button>
-            </Box>
+            <Header 
+                onPreviousQuestion={onPreviousQuestion}
+                questionFraction={question.questionFraction}
+                coexistUrl="https://www.getcoexist.com/"
+            />
             <Box className={styles.questionBox}>
                 {question.imageUrl && (
                     <img src={question.imageUrl} alt="Question" className={styles.questionImage} />

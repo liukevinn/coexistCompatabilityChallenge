@@ -91,7 +91,7 @@ const App = () => {
     const [score, setScore] = useState(0);
     const [quizFinished, setQuizFinished] = useState(false);
 
-    const handleAnswerSelected = (option, points) => {
+    const handleAnswerSelected = (points) => {
         setScore(prevScore => prevScore + points);
     };
 
