@@ -4,6 +4,8 @@ import LandingPageComponent from './components/LandingPageComponent.jsx';
 import QuestionComponent from './components/QuestionComponent';
 import ScoreComponent from './components/ScoreComponent';
 import Header from './components/Header.jsx';
+import DownloadButtons from './components/DownloadButtons';
+import Blog from './components/Blog';
 
 // Images
 import pic1 from '/Users/kevinliu/Desktop/coexist compatability challenge/src/pictures/265.Shopping-With-My-Dog.svg';
@@ -23,17 +25,15 @@ const questions = [
               "explore different shops and make spontaneous grocery runs"],
         points: [4, 2, 3, 1],  // Points associated with each option
         imageUrl: pic1,
-
+        questionFraction: "1/7"
     },
-
     {
         text: "manage the household budget?",
-        imageUrl:pic2,
+        imageUrl: pic2,
         options: ["keep a detailed spreadsheet and have regularly scheduled check-ins", "review expenses every once in a while to make sure we’re being financially efficient", "have regular discussions to make sure we’re staying comfortable", "handle it creatively and flexibly, adjusting as we go"],
         points: [4, 2, 3, 1],
-
+        questionFraction: "2/7"
     },
-
     {
         text: "decide who does the dishes?",
         imageUrl: pic3,
@@ -42,6 +42,7 @@ const questions = [
              "the cook gets a pass, and the other person does the dishes",
             "switch it up based on moods, energy levels, and creativity"],
         points: [4, 2, 3, 1],
+        questionFraction: "3/7"
     }, 
     {
         text: "wash the bedsheets?",
@@ -51,9 +52,8 @@ const questions = [
              "every two weeks",
             "whenever it feels necessary"],
         points: [4, 2, 3, 1],
-
+        questionFraction: "4/7"
     }, 
-
     {
         text: "handle cleaning at home?",
         options: ["use a vacuum robot and smart home gadgets to automate it as much as possible",
@@ -62,9 +62,8 @@ const questions = [
             "have a cleaning party when we’re feeling inspired"],
         points: [4, 2, 3, 1],
         imageUrl: pic5, 
-
+        questionFraction: "5/7"
     }, 
-
     {
         text: "handle meal preparation at home?",
         imageUrl: pic4,
@@ -73,8 +72,8 @@ const questions = [
              "one person loves cooking, and the other helps as needed",
             "have fun creating unique meals based on individual preferences and whatever we have at home"],
         points: [4, 2, 3, 1],
+        questionFraction: "6/7"
     }, 
-
     {
         text: "manage home maintenance and repairs?",
         options: ["keep a schedule of regular maintenance tasks and use handy apps to quickly connect with experts for urgent repairs",
@@ -83,6 +82,7 @@ const questions = [
             "get creative with DIY and have fun exploring solutions"],
         points: [4, 2, 3, 1],
         imageUrl: pic7,
+        questionFraction: "7/7"
     }
 ];
 
@@ -111,18 +111,14 @@ const App = () => {
     };
 
     return (
-        <div className="appContainer">
+        <div className="container">
             {!quizStarted ? (
                 <LandingPageComponent onStartQuiz={() => setQuizStarted(true)} />
             ) : quizFinished ? (
                 <ScoreComponent score={score} onStartQuiz={() => setQuizStarted(false)} />
             ) : (
                 <>
-                    <Header
-                        onPreviousQuestion={handlePreviousQuestion}
-                        questionFraction={`${currentQuestionIndex + 1}/${questions.length}`}
-                        coexistUrl="https://www.getcoexist.com"
-                    />
+                    <Header onPreviousQuestion={handlePreviousQuestion} questionFraction={`${currentQuestionIndex + 1}/${questions.length}`} coexistUrl="https://www.instagram.com/" />
                     <QuestionComponent 
                         question={questions[currentQuestionIndex]} 
                         onAnswerSelected={handleAnswerSelected} 
@@ -131,9 +127,14 @@ const App = () => {
                     />
                 </>
             )}
+            <div className="section">
+                <DownloadButtons />
+            </div>
+            <div className="section">
+                <Blog />
+            </div>
         </div>
     );
-    
 }
 
 export default App;

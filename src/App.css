@@ -1,7 +1,24 @@
-/* App.css */
-.appContainer {
-  overflow: hidden;
-  
-  height: 100vh; /* Viewport height to take full screen height */
-  width: 100vw; /* Viewport width to take full screen width */
+.container {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.section {
+  margin-bottom: 2vh; /* Adjust this value to control spacing between sections */
+}
+
+.download-buttons-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2vh 0;
+  background-color: #f9f9f9;
+}
+
+.blog-container {
+  text-align: center;
+  padding: 2vh;
+  background-color: #fff;
 }
