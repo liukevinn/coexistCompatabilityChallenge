@@ -13,7 +13,7 @@ import pic2 from '/Users/kevinliu/Desktop/coexist compatability challenge/src/pi
 import pic3 from '/Users/kevinliu/Desktop/coexist compatability challenge/src/pictures/211. Coffee.svg';
 import pic4 from '/Users/kevinliu/Desktop/coexist compatability challenge/src/pictures/18.Chilling.svg';
 import pic5 from '/Users/kevinliu/Desktop/coexist compatability challenge/src/pictures/236.Take-It.svg';
-import pic6 from '/Users/kevinliu/Desktop/coexist compatability challenge/src/pictures/282.Happy-Shopping.svg';
+import pic6 from '/Users/kevinliu/Desktop/coexist compatability challenge/src/pictures/26.Nutritionist.svg';
 import pic7 from '/Users/kevinliu/Desktop/coexist compatability challenge/src/pictures/122.Idea.svg';
 
 const questions = [
@@ -66,7 +66,7 @@ const questions = [
     }, 
     {
         text: "handle meal preparation at home?",
-        imageUrl: pic4,
+        imageUrl: pic6,
         options: ["plan out meals for the week and follow recipes closely",
              "ready-made or take-out meals",
              "one person loves cooking, and the other helps as needed",
@@ -115,10 +115,26 @@ const App = () => {
             {!quizStarted ? (
                 <LandingPageComponent onStartQuiz={() => setQuizStarted(true)} />
             ) : quizFinished ? (
-                <ScoreComponent score={score} onStartQuiz={() => setQuizStarted(false)} />
+                <>
+                <Header 
+                        onPreviousQuestion={handlePreviousQuestion} 
+                        coexistUrl="https://getcoexist.com" 
+                    />
+                    <ScoreComponent score={score} onStartQuiz={() => setQuizStarted(false)} />
+                    <div className="section">
+                        <DownloadButtons />
+                    </div>
+                    <div className="section">
+                        <Blog />
+                    </div>
+                </>
             ) : (
                 <>
-                    <Header onPreviousQuestion={handlePreviousQuestion} questionFraction={`${currentQuestionIndex + 1}/${questions.length}`} coexistUrl="https://www.instagram.com/" />
+                    <Header 
+                        onPreviousQuestion={handlePreviousQuestion} 
+                        questionFraction={`${currentQuestionIndex + 1}/${questions.length}`} 
+                        coexistUrl="https://getcoexist.com" 
+                    />
                     <QuestionComponent 
                         question={questions[currentQuestionIndex]} 
                         onAnswerSelected={handleAnswerSelected} 
@@ -127,14 +143,9 @@ const App = () => {
                     />
                 </>
             )}
-            <div className="section">
-                <DownloadButtons />
-            </div>
-            <div className="section">
-                <Blog />
-            </div>
         </div>
-    );
+    )
 }
-
 export default App;
+
+    

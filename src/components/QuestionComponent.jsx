@@ -50,7 +50,7 @@ const QuestionComponent = ({ question, onAnswerSelected, onNextQuestion, onPrevi
                 )}
                 <Typography variant="h5" className={styles.questionText}>
                     <p>How do you prefer to...</p>
-                    {question.text}
+                    <p>{question.text}</p>
                 </Typography>
             </Box>
             <Box className={styles.options}>
@@ -60,6 +60,7 @@ const QuestionComponent = ({ question, onAnswerSelected, onNextQuestion, onPrevi
                             onClick={() => handleOptionSelect(option.id, question.points[option.id])}
                             className={styles.option}
                             disabled={hasSelected}
+                            sx={{ border: '0.2vh solid black', borderRadius: '5vh' }}
                         >
                             <div 
                                 className={styles.optionBackground}
@@ -84,9 +85,11 @@ const QuestionComponent = ({ question, onAnswerSelected, onNextQuestion, onPrevi
                 onClick={onNextQuestion}
                 className={styles.nextButton}
                 disabled={!hasSelected}
+                sx={{ textTransform: 'none', fontFamily: 'Lexend, sans-serif', borderRadius: '10vh' }}
             >
-                Next
+                next
             </Button>
+
         </Box>
     );
 };

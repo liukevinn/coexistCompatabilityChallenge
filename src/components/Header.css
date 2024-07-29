@@ -5,7 +5,20 @@
     width: 100%;
 }
 
+.button {
+    text-transform: none; /* Ensure text is not transformed to uppercase */
+    font-family: "Lexend", sans-serif;
+    font-size: 1rem;
+    color: inherit; /* Inherit color from the parent element */
+}
+
 .fraction {
     text-align: center;
     font-size: 1rem;
+    font-family: "Lexend", sans-serif;
+}
+
+.coexist {
+    font-family: "Lexend", sans-serif;
+    color: #706E9A;
 }

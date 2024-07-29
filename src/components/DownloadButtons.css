@@ -2,17 +2,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    
     color: #333;
     background-color: #f9f9f9;
 
     overflow: auto;
 }
-
-.download-buttons-container h2 {
-    margin-bottom: 2vh;
-}
-
 .buttons {
     display: flex;
     gap: 2vw; /* Space between buttons */
@@ -37,5 +31,5 @@
 
 .apple-store span, .google-play span {
     display: block;
-    margin-top: 0.5vh;
+
 }

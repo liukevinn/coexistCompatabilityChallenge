@@ -27,7 +27,7 @@ const blogs = [
 const Blog = () => {
     return (
         <div className="blog-container">
-            <h2>Check out our blog!</h2>
+            <h2>check out our blog!</h2>
             <div className="blog-grid">
                 {blogs.map((blog, index) => (
                     <div key={index} className="blog-post">

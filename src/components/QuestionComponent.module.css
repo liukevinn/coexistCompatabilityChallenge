@@ -1,26 +1,20 @@
-
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
     font-family: "Lexend", sans-serif;
-    justify-content: flex-start; /* Changed from space-between to flex-start */
+    justify-content: flex-start;
     height: 100vh;
     background-color: white;
-    width: 100vw; /* Use the full viewport width */
-    padding-top: 50px; /* Adjust this value based on the actual height of your header */
-    padding-bottom: 50px; /* Adjust this value based on the actual height of your next button */
+    width: 100vw;
+    padding-top: 50px;
+    padding-bottom: 50px;
     box-sizing: border-box;
     text-align: center;
-    overflow: hidden; /* Ensures no scrolling */
+    overflow: hidden;
     color: black;
 }
 
-.nextButton {
-    position: fixed; /* Fixed positioning */
-    bottom: 0; /* Align to the bottom */
-    z-index: 1000; /* Ensures it stays on top of other content */
-}
 
 .questionBox {
     background-color: #F9F9F9;
@@ -28,29 +22,28 @@
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 80%;
-    max-width: 600px; /* Adjusted for better responsiveness */
+    max-width: 600px;
     margin: 20px auto;
     flex-grow: 1;
     overflow-y: auto;
 }
 
 .questionImage {
-    width: 100%; /* Full width of its container */
-    max-height: 200px; /* Limiting the image height */
-    object-fit: contain; /* Ensures the image is scaled properly */
-    margin-bottom: 20px; /* Space between image and question text */
+    width: 100%;
+    max-height: 200px;
+    object-fit: contain;
+    margin-bottom: 20px;
 }
 
 .options {
     width: 80%;
-    max-width: 600px; /* Consistency with questionBox */
+    max-width: 600px;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
     outline: black;
 }
 
-/* No changes needed below this line, unless adjustments to paddings/margins are required for fitting */
 
 .option {
     position: relative;
@@ -60,8 +53,8 @@
     justify-content: center;
     padding: 1.5vh;
     cursor: pointer;
-    border: 0.1vh solid #ccc;
-    border-radius: 5vh; /* Increased border-radius for curvy boxes */
+    border: 0.1vh solid black; /* Outline the option */
+    border-radius: 5vh;
     margin: 1vh 0;
     background-color: #FFF;
     font-size: 2vh;
@@ -69,7 +62,7 @@
     transition: background-color 0.3s ease;
     text-transform: none;
     color: black;
-    outline: 0.1vh solid #706E9A; /* Added outline to the option boxes */
+    outline: 0.1vh solid black; /* Outline the option */
 }
 
 
@@ -82,11 +75,10 @@
     transition: width 0.5s ease-in-out;
     z-index: 0;
     border-radius: 5vh;
-    
-    
 }
 
 .optionText {
+    font-family: "Lexend", sans-serif;
     z-index: 1;
     position: relative;
     display: flex;
@@ -96,6 +88,7 @@
 }
 
 .responseData {
+    font-family: "Lexend", sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -105,16 +98,14 @@
     margin: 1vh 0;
 }
 
+
 .nextButton {
-    padding: 2vh 4vh;
     font-size: 2vh;
-    background-color: #706E9A;
-    color: white;
-    border: none;
-    border-radius: 5vh;
+    background-color: #706E9A; /* Default color */
     cursor: pointer;
     margin-top: 2vh;
     transition: background-color 0.3s ease;
+    width: 7vw; /* Ensure consistent button width */
 }
 
 .nextButton:disabled {
@@ -122,6 +113,10 @@
     cursor: not-allowed;
 }
 
+.nextButton:not(:disabled) {
+    background-color: #706E9A; /* Color after an option is selected */
+}
+
 .nextButton:not(:disabled):hover {
-    background-color: #5a4f7c;
+    background-color: #4e416a; /* Darker shade of purple on hover */
 }

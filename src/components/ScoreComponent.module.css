@@ -29,6 +29,9 @@
     text-align: center; /* Ensures description is centered */
     margin-bottom: 2vh;
 }
+.h2{
+    font-size: 20vh
+}
 
 .shareContainer {
     margin: 2vh 0; /* Adjusted for viewport height */
