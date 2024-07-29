@@ -3,6 +3,9 @@ import './App.css';
 import LandingPageComponent from './components/LandingPageComponent.jsx';
 import QuestionComponent from './components/QuestionComponent';
 import ScoreComponent from './components/ScoreComponent';
+import Header from './components/Header.jsx';
+
+// Images
 import pic1 from '/Users/kevinliu/Desktop/coexist compatability challenge/src/pictures/265.Shopping-With-My-Dog.svg';
 import pic2 from '/Users/kevinliu/Desktop/coexist compatability challenge/src/pictures/92.Savings.svg';
 import pic3 from '/Users/kevinliu/Desktop/coexist compatability challenge/src/pictures/211. Coffee.svg';
@@ -10,6 +13,7 @@ import pic4 from '/Users/kevinliu/Desktop/coexist compatability challenge/src/pi
 import pic5 from '/Users/kevinliu/Desktop/coexist compatability challenge/src/pictures/236.Take-It.svg';
 import pic6 from '/Users/kevinliu/Desktop/coexist compatability challenge/src/pictures/282.Happy-Shopping.svg';
 import pic7 from '/Users/kevinliu/Desktop/coexist compatability challenge/src/pictures/122.Idea.svg';
+
 const questions = [
     {
         text: "handle grocery shopping?",
@@ -19,7 +23,7 @@ const questions = [
               "explore different shops and make spontaneous grocery runs"],
         points: [4, 2, 3, 1],  // Points associated with each option
         imageUrl: pic1,
-        questionFraction: "1/7"
+
     },
 
     {
@@ -27,7 +31,7 @@ const questions = [
         imageUrl:pic2,
         options: ["keep a detailed spreadsheet and have regularly scheduled check-ins", "review expenses every once in a while to make sure we’re being financially efficient", "have regular discussions to make sure we’re staying comfortable", "handle it creatively and flexibly, adjusting as we go"],
         points: [4, 2, 3, 1],
-        questionFraction: "2/7"
+
     },
 
     {
@@ -38,7 +42,6 @@ const questions = [
              "the cook gets a pass, and the other person does the dishes",
             "switch it up based on moods, energy levels, and creativity"],
         points: [4, 2, 3, 1],
-        questionFraction: "3/7"
     }, 
     {
         text: "wash the bedsheets?",
@@ -48,7 +51,7 @@ const questions = [
              "every two weeks",
             "whenever it feels necessary"],
         points: [4, 2, 3, 1],
-        questionFraction: "4/7"
+
     }, 
 
     {
@@ -59,7 +62,7 @@ const questions = [
             "have a cleaning party when we’re feeling inspired"],
         points: [4, 2, 3, 1],
         imageUrl: pic5, 
-        questionFraction: "5/7"
+
     }, 
 
     {
@@ -70,7 +73,6 @@ const questions = [
              "one person loves cooking, and the other helps as needed",
             "have fun creating unique meals based on individual preferences and whatever we have at home"],
         points: [4, 2, 3, 1],
-        questionFraction: "6/7"
     }, 
 
     {
@@ -81,7 +83,6 @@ const questions = [
             "get creative with DIY and have fun exploring solutions"],
         points: [4, 2, 3, 1],
         imageUrl: pic7,
-        questionFraction: "7/7"
     }
 ];
 
@@ -110,21 +111,29 @@ const App = () => {
     };
 
     return (
-        <div>
+        <div className="appContainer">
             {!quizStarted ? (
                 <LandingPageComponent onStartQuiz={() => setQuizStarted(true)} />
             ) : quizFinished ? (
                 <ScoreComponent score={score} onStartQuiz={() => setQuizStarted(false)} />
             ) : (
-                <QuestionComponent 
-                    question={questions[currentQuestionIndex]} 
-                    onAnswerSelected={handleAnswerSelected} 
-                    onNextQuestion={handleNextQuestion}
-                    onPreviousQuestion={handlePreviousQuestion}
-                />
+                <>
+                    <Header
+                        onPreviousQuestion={handlePreviousQuestion}
+                        questionFraction={`${currentQuestionIndex + 1}/${questions.length}`}
+                        coexistUrl="https://www.getcoexist.com"
+                    />
+                    <QuestionComponent 
+                        question={questions[currentQuestionIndex]} 
+                        onAnswerSelected={handleAnswerSelected} 
+                        onNextQuestion={handleNextQuestion}
+                        onPreviousQuestion={handlePreviousQuestion}
+                    />
+                </>
             )}
         </div>
     );
+    
 }
 
 export default App;

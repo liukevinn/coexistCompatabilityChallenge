@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Typography, Button } from '@mui/material';
-import Header from '/Users/kevinliu/Desktop/coexist compatability challenge/src/components/Header.jsx'; // Import the new Header component
 import styles from './QuestionComponent.module.css';
 
 const QuestionComponent = ({ question, onAnswerSelected, onNextQuestion, onPreviousQuestion }) => {
@@ -44,17 +43,13 @@ const QuestionComponent = ({ question, onAnswerSelected, onNextQuestion, onPrevi
 
     return (
         <Box className={styles.container}>
-            <Header 
-                onPreviousQuestion={onPreviousQuestion}
-                questionFraction={question.questionFraction}
-                coexistUrl="https://www.getcoexist.com/"
-            />
+            
             <Box className={styles.questionBox}>
                 {question.imageUrl && (
                     <img src={question.imageUrl} alt="Question" className={styles.questionImage} />
                 )}
-                <Typography variant="h5" className={styles.question}>
-                    <p>how do you prefer to...</p>
+                <Typography variant="h5" className={styles.questionText}>
+                    <p>How do you prefer to...</p>
                     {question.text}
                 </Typography>
             </Box>

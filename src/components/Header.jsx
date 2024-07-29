@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Typography } from '@mui/material';
+import './Header.css';  // Corrected CSS import
 
 const Header = ({ onPreviousQuestion, questionFraction, coexistUrl }) => {
     return (

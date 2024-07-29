@@ -1,44 +1,53 @@
+
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-family: "Lexend", sans-serif;
     justify-content: flex-start; /* Changed from space-between to flex-start */
     height: 100vh;
-    max-width: 100vh;
+    background-color: white;
+    width: 100vw; /* Use the full viewport width */
     padding-top: 50px; /* Adjust this value based on the actual height of your header */
     padding-bottom: 50px; /* Adjust this value based on the actual height of your next button */
     box-sizing: border-box;
     text-align: center;
     overflow: hidden; /* Ensures no scrolling */
+    color: black;
 }
 
 .nextButton {
     position: fixed; /* Fixed positioning */
     bottom: 0; /* Align to the bottom */
-    width: 100%;
-    max-width: 100vh; /* Ensuring it spans the full width */
     z-index: 1000; /* Ensures it stays on top of other content */
 }
 
 .questionBox {
     background-color: #F9F9F9;
-    padding: 2vh;
-    border-radius: 4vh;
-    box-shadow: 0 0.4vh 0.8vh rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 80%;
-    max-width: 60vh;
-    text-align: center;
-    margin: 20px auto; /* Auto margins for central alignment */
+    max-width: 600px; /* Adjusted for better responsiveness */
+    margin: 20px auto;
     flex-grow: 1;
-    overflow-y: auto; /* Allows scrolling within the question box only if necessary */
+    overflow-y: auto;
+}
+
+.questionImage {
+    width: 100%; /* Full width of its container */
+    max-height: 200px; /* Limiting the image height */
+    object-fit: contain; /* Ensures the image is scaled properly */
+    margin-bottom: 20px; /* Space between image and question text */
 }
 
 .options {
     width: 80%;
-    max-width: 60vh;
+    max-width: 600px; /* Consistency with questionBox */
     display: flex;
     flex-direction: column;
-    margin: 20px auto; /* Auto margins for central alignment */
+    margin: 0 auto;
+    outline: black;
 }
 
 /* No changes needed below this line, unless adjustments to paddings/margins are required for fitting */
@@ -47,7 +56,7 @@
     position: relative;
     overflow: hidden;
     display: flex;
-    align-items: center;
+    align-items: left;
     justify-content: center;
     padding: 1.5vh;
     cursor: pointer;
@@ -80,7 +89,6 @@
 .optionText {
     z-index: 1;
     position: relative;
-    width: 100%;
     display: flex;
     justify-content: space-between;
     text-transform: none;
