@@ -4,7 +4,7 @@
     align-items: center;
     padding: 2vh; /* Adjusted from px to vh for better scaling */
     color: #333;
-    background-color: #f9f9f9;
+    background-color: #CCDBE6;
     width: 100vw; /* Full viewport width */
     height: 100vh; /* Full viewport height */
     overflow: auto;
@@ -15,6 +15,7 @@
     font-size: 2.5vh; /* Adjusted for viewport height */
     margin-bottom: 1vh;
     text-align: center; /* Ensures title is centered */
+    z-index: 1;
 }
 
 .subtitle {
@@ -22,15 +23,18 @@
     font-size: 2.1vh; /* Adjusted for viewport height */
     margin-bottom: 1.5vh;
     text-align: center; /* Ensures subtitle is centered */
+    z-index: 1;
 }
 
 .description {
     font-size: 1.7vh; /* Adjusted for viewport height */
     text-align: center; /* Ensures description is centered */
     margin-bottom: 2vh;
+    z-index: 1;
 }
 .h2{
-    font-size: 20vh
+    font-size: 20vh;
+    z-index: 1;
 }
 
 .shareContainer {
@@ -43,6 +47,7 @@
     background: none;
     border: none;
     cursor: pointer;
+    z-index: 1;
 }
 
 .compatibility {
@@ -50,6 +55,7 @@
     display: flex;
     flex-direction: column;
     align-items: center; /* Ensures the list is centered */
+    z-index: 1;
 }
 
 .compatibilityItem {
@@ -63,10 +69,14 @@
     box-shadow: 0 0.2vh 0.4vh rgba(0,0,0,0.1);
     width: 80vw; /* Responsive width */
     text-align: center; /* Center text within each item */
+    z-index: 1
 }
 
 .compatibilityImage {
     width: 10vw; /* Responsive width for larger display */
     height: auto; /* Maintain aspect ratio */
     margin-bottom: 1vh; /* Space below the image */
+    z-index: 1;
 }
+
+

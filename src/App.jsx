@@ -8,13 +8,13 @@ import DownloadButtons from './components/DownloadButtons';
 import Blog from './components/Blog';
 
 // Images
-import pic1 from '/Users/kevinliu/Desktop/coexist compatability challenge/src/pictures/265.Shopping-With-My-Dog.svg';
-import pic2 from '/Users/kevinliu/Desktop/coexist compatability challenge/src/pictures/92.Savings.svg';
-import pic3 from '/Users/kevinliu/Desktop/coexist compatability challenge/src/pictures/211. Coffee.svg';
-import pic4 from '/Users/kevinliu/Desktop/coexist compatability challenge/src/pictures/18.Chilling.svg';
-import pic5 from '/Users/kevinliu/Desktop/coexist compatability challenge/src/pictures/236.Take-It.svg';
-import pic6 from '/Users/kevinliu/Desktop/coexist compatability challenge/src/pictures/26.Nutritionist.svg';
-import pic7 from '/Users/kevinliu/Desktop/coexist compatability challenge/src/pictures/122.Idea.svg';
+import pic1 from './pictures/265.Shopping-With-My-Dog.svg';
+import pic2 from './pictures/92.Savings.svg';
+import pic3 from './pictures/211. Coffee.svg';
+import pic4 from './pictures/18.Chilling.svg';
+import pic5 from './pictures/236.Take-It.svg';
+import pic6 from './pictures/26.Nutritionist.svg';
+import pic7 from './pictures/122.Idea.svg';
 
 const questions = [
     {
