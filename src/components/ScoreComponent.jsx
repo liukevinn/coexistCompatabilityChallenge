@@ -1,12 +1,11 @@
 import React from 'react';
 import styles from './ScoreComponent.module.css'; // Ensure this path is correct
-import { Facebook, Instagram, LinkedIn, Link } from '@mui/icons-material';
+import { Facebook, LinkedIn, Link } from '@mui/icons-material';
 import pic1 from '../pictures/122.Idea.svg'; // Ensure these paths are correct
 
 const handleShareFacebook = () => {
     window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.location.href), '_blank');
 };
-
 
 const handleShareLinkedIn = () => {
     window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(document.location.href), '_blank');
@@ -62,34 +61,31 @@ const ScoreComponent = ({ score }) => {
             };
         }
     };
-    
 
     const personality = getPersonalityType(score);
 
     return (
         <div className={styles.container}>
-            <div className={styles.semiCircle}></div> {/* Moved here to ensure it's the background */}
-            <h2>your result:</h2>
+            <h2>Your Result:</h2>
             <img src={pic1} className={styles.compatibilityImage} />
             <h2>{personality.type}</h2>
             <p className={styles.description}>{personality.blurb}</p>
 
             <div className={styles.shareContainer}>
-                <h3>share your results:</h3>
+                <h3>Share Your Results:</h3>
                 <div className={styles.icons}>
                     <button onClick={handleShareFacebook}><Facebook /></button>
-                
                     <button onClick={handleShareLinkedIn}><LinkedIn /></button>
                     <button onClick={handleCopyLink}><Link /></button>
                 </div>
             </div>
 
             <div className={styles.compatibility}>
-                <h3>your compatibility with...</h3>
+                <h3>Your Compatibility With...</h3>
                 {personality.compatibilities.map((comp) => (
                     <div key={comp.type} className={styles.compatibilityItem}>
                         <img src={comp.imageUrl} alt={comp.type} className={styles.compatibilityImage} />
-                        <div className={styles.compatibilityText}>
+                        <div>
                             <strong>{comp.type}:</strong> {comp.description}
                         </div>
                     </div>

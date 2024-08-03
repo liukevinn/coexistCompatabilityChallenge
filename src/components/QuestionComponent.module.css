@@ -15,37 +15,44 @@
     color: black;
 }
 
-
 .questionBox {
     background-color: #F9F9F9;
-    padding: 20px;
+    padding: 2vh; /* Use viewport height for consistent padding */
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    max-width: 600px;
+    width: 80vw; /* Width relative to the viewport width */
+    max-width: 600px; /* Maximum width to ensure it doesn't get too large on bigger screens */
     margin: 20px auto;
-    flex-grow: 1;
-    overflow-y: auto;
+    overflow: hidden; /* Prevents internal scrolling */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distributes space evenly */
+    
 }
 
 .questionImage {
     width: 100%;
-    max-height: 200px;
-    object-fit: contain;
-    margin-bottom: 20px;
+    max-height: 200px; /* Adjust if necessary to fit within the box */
+    object-fit: contain; /* Ensures the image is scaled properly */
+    margin-bottom: 5px;
 }
 
+
+
 .options {
+    color: black;
     width: 80%;
     max-width: 600px;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
     outline: black;
+    margin-top: 1vh; 
 }
 
 
 .option {
+    color: black;
     position: relative;
     overflow: hidden;
     display: flex;

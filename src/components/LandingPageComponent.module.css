@@ -24,7 +24,7 @@
     font-size: 2.5vh; /* Made the coexist and presents text smaller */
 }
 .presents{
-    
+    color: #fff;
     font-size: 2.5vh; /* Made the coexist and presents text smaller */
     font-weight: 300
 }
@@ -52,6 +52,7 @@ p {
     height: auto;
     margin: 5vh 0; /* Adjusted margin to use vh */
     z-index: 1;
+    transform: translateY(23%)
 }
 
 .footer {
@@ -70,7 +71,9 @@ p {
     cursor: pointer;
     transition: background-color 0.3s ease;
     width: 50vw; /* Button width set to half the screen width */
+    max-width: 500px;
     font-family: "Lexend", sans-serif;
+    transform: translateY(300%);
 }
 
 .startButton:hover {
@@ -103,6 +106,8 @@ p {
 
     .logo {
         width: 70%;
+
+
     }
 
     .startButton {

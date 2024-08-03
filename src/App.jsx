@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import LandingPageComponent from './components/LandingPageComponent.jsx';
 import QuestionComponent from './components/QuestionComponent';
@@ -16,7 +16,7 @@ import pic5 from './pictures/236.Take-It.svg';
 import pic6 from './pictures/26.Nutritionist.svg';
 import pic7 from './pictures/122.Idea.svg';
 
-const questions = [
+const initialQuestions = [
     {
         text: "handle grocery shopping?",
         options: ["plan meals ahead and stick to a categorized shopping list", 
@@ -86,15 +86,51 @@ const questions = [
     }
 ];
 
+// Function to shuffle an array
+const shuffleArray = (array) => {
+    let newArray = array.slice();
+    for (let i = newArray.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+    }
+    return newArray;
+};
+
+// Shuffle the questions and their options
+const shuffleQuestionsAndOptions = (questions) => {
+    const shuffledQuestions = shuffleArray(questions).map((question) => {
+        const shuffledOptions = shuffleArray(
+            question.options.map((option, index) => ({
+                text: option,
+                points: question.points[index]
+            }))
+        );
+        return {
+            ...question,
+            options: shuffledOptions.map(option => option.text),
+            points: shuffledOptions.map(option => option.points)
+        };
+    });
+    return shuffledQuestions;
+};
 const App = () => {
     const [quizStarted, setQuizStarted] = useState(false);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-    const [score, setScore] = useState(0);
     const [quizFinished, setQuizFinished] = useState(false);
+    const [questions, setQuestions] = useState([]);
+    const [selectedPoints, setSelectedPoints] = useState(new Array(initialQuestions.length).fill(0));
+
+    useEffect(() => {
+        setQuestions(shuffleQuestionsAndOptions(initialQuestions));
+    }, []);
 
     const handleAnswerSelected = (points) => {
-        setScore(prevScore => prevScore + points);
+        const updatedPoints = [...selectedPoints];
+        updatedPoints[currentQuestionIndex] = points;
+        setSelectedPoints(updatedPoints);
     };
+
+    const getTotalScore = () => selectedPoints.reduce((acc, curr) => acc + curr, 0);
 
     const handleNextQuestion = () => {
         if (currentQuestionIndex + 1 < questions.length) {
@@ -107,6 +143,8 @@ const App = () => {
     const handlePreviousQuestion = () => {
         if (currentQuestionIndex > 0) {
             setCurrentQuestionIndex(currentQuestionIndex - 1);
+        } else {
+            setQuizStarted(false); // Go back to landing page if on the first question
         }
     };
 
@@ -116,17 +154,15 @@ const App = () => {
                 <LandingPageComponent onStartQuiz={() => setQuizStarted(true)} />
             ) : quizFinished ? (
                 <>
-                <Header 
-                        onPreviousQuestion={handlePreviousQuestion} 
-                        coexistUrl="https://getcoexist.com" 
-                    />
-                    <ScoreComponent score={score} onStartQuiz={() => setQuizStarted(false)} />
+                    <ScoreComponent score={getTotalScore()} onStartQuiz={() => setQuizStarted(false)} />
+                    
                     <div className="section">
                         <DownloadButtons />
                     </div>
                     <div className="section">
                         <Blog />
                     </div>
+                   
                 </>
             ) : (
                 <>
@@ -144,8 +180,7 @@ const App = () => {
                 </>
             )}
         </div>
-    )
-}
-export default App;
+    );
+};
 
-    
+export default App;

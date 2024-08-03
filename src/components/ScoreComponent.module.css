@@ -2,81 +2,64 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 2vh; /* Adjusted from px to vh for better scaling */
+    padding: 2vh; /* Consistent scaling with viewport */
     color: #333;
     background-color: #CCDBE6;
     width: 100vw; /* Full viewport width */
-    height: 100vh; /* Full viewport height */
-    overflow: auto;
+    overflow-y: hidden;
+    overflow-x: hidden; /* Hide both horizontal and vertical overflow */
+    
 }
 
-.title {
-    color: #2c3e50;
-    font-size: 2.5vh; /* Adjusted for viewport height */
-    margin-bottom: 1vh;
-    text-align: center; /* Ensures title is centered */
-    z-index: 1;
+.title, .subtitle, .description, .h2 {
+    text-align: center; /* Center all text */
+    margin-bottom: 2vh; /* Consistent bottom margin */
 }
 
-.subtitle {
-    color: #34495e;
-    font-size: 2.1vh; /* Adjusted for viewport height */
-    margin-bottom: 1.5vh;
-    text-align: center; /* Ensures subtitle is centered */
-    z-index: 1;
-}
-
-.description {
-    font-size: 1.7vh; /* Adjusted for viewport height */
-    text-align: center; /* Ensures description is centered */
-    margin-bottom: 2vh;
-    z-index: 1;
-}
-.h2{
-    font-size: 20vh;
-    z-index: 1;
+.h2 {
+    font-size: 5vh; /* Adjusted for better visibility across devices */
 }
 
 .shareContainer {
-    margin: 2vh 0; /* Adjusted for viewport height */
-    text-align: center; /* Ensures share buttons are centered */
+    margin: 2vh auto; /* Centered with automatic margins */
+    text-align: center;
+    width: 90vw; /* Slightly less than full width to accommodate padding */
 }
 
 .icons button {
-    margin: 0 1vw; /* Using vw to maintain horizontal scaling */
+    margin: 0 1vw; /* Horizontal margin based on viewport width */
+    padding: 1vh 2vh; /* Button padding */
     background: none;
     border: none;
     cursor: pointer;
-    z-index: 1;
+    font-size: 3rem; /* Increase the size of the icon */    
+    
 }
 
 .compatibility {
-    width: 100vw; /* Ensuring full viewport width */
     display: flex;
     flex-direction: column;
-    align-items: center; /* Ensures the list is centered */
-    z-index: 1;
+    align-items: center;
+    width: 100vw;
+    margin-top: 2vh; /* Space above compatibility section */
 }
 
 .compatibilityItem {
     display: flex;
-    flex-direction: column; /* Stacks items vertically */
-    align-items: center; /* Center content vertically and horizontally */
-    margin-top: 1vh;
+    flex-direction: column;
+    align-items: center;
+    margin: 1vh 0;
     background-color: white;
     padding: 2vh;
     border-radius: 0.8vh;
     box-shadow: 0 0.2vh 0.4vh rgba(0,0,0,0.1);
-    width: 80vw; /* Responsive width */
-    text-align: center; /* Center text within each item */
-    z-index: 1
+    width: 80vw; /* Width responsive to viewport */
+    max-width: 500px; /* Maximum width to prevent oversizing on large screens */
 }
 
 .compatibilityImage {
-    width: 10vw; /* Responsive width for larger display */
-    height: auto; /* Maintain aspect ratio */
-    margin-bottom: 1vh; /* Space below the image */
-    z-index: 1;
+    width: 15vw; /* Adjusted for larger display */
+    max-width: 120px; /* Maximum width to maintain aesthetics */
+    height: auto;
+    margin-bottom: 1vh;
 }
-
-

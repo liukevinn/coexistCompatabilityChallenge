@@ -6,21 +6,23 @@ const Header = ({ onPreviousQuestion, questionFraction, coexistUrl }) => {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        width: '100%'
+        width: '100%',
+        backgroundColor: 'white'  // Added white background color
     };
 
     const buttonStyles = {
         textTransform: 'none', // Ensure text is not transformed to uppercase
         fontFamily: '"Lexend", sans-serif',
         fontSize: '1rem',
-        color: 'inherit', // Inherit color from the parent element
+        color: 'black', // Changed color to black
         marginLeft: '2vw'
     };
 
     const fractionStyles = {
         textAlign: 'center',
         fontSize: '1rem',
-        fontFamily: '"Lexend", sans-serif'
+        fontFamily: '"Lexend", sans-serif',
+        color: 'black'  // Set text color to black
     };
 
     const coexistButtonStyles = {
@@ -41,7 +43,7 @@ const Header = ({ onPreviousQuestion, questionFraction, coexistUrl }) => {
                 style={coexistButtonStyles} 
                 onClick={() => window.location.href = coexistUrl}
             >
-                coexist
+                <strong>coexist</strong>
             </Button>
         </div>
     );

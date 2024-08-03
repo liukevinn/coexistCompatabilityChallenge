@@ -12,17 +12,6 @@
     gap: 2vw; /* Space between buttons */
 }
 
-.apple-store, .google-play {
-    display: inline-block;
-    padding: 2vh 4vw;
-    border: 0.2vh solid #ccc;
-    border-radius: 1vh;
-    text-decoration: none;
-    color: #666;
-    font-weight: bold;
-    transition: background-color 0.3s, color 0.3s;
-    text-align: center;
-}
 
 .apple-store:hover, .google-play:hover {
     background-color: #fff;
