@@ -6,7 +6,7 @@ import pic2 from '../pictures/Google Play.svg'
 const DownloadButtons = () => {
     return (
         <div className="download-buttons-container">
-            <h2>Try 2 Weeks Free</h2>
+            <h2>try 2 weeks free</h2>
             <div className="buttons">
                 <a href="https://apps.apple.com/us/app/coexist-simplify-housework/id1659744046" className="apple-store">
                     <img src={pic1} alt="Apple Store" />

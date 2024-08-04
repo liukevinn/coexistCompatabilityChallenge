@@ -6,24 +6,31 @@
     color: #333;
     background-color: #CCDBE6;
     width: 100vw; /* Full viewport width */
-    overflow-y: hidden;
-    overflow-x: hidden; /* Hide both horizontal and vertical overflow */
-    
+    margin: 0;
+    overflow-y: hidden; /* Hide vertical overflow */
+    overflow-x: hidden; /* Hide horizontal overflow */
+    box-sizing: border-box; /* Includes padding and border in the element's total width and height */
 }
 
-.title, .subtitle, .description, .h2 {
+.title, .subtitle, .description, .h2, .h3 {
     text-align: center; /* Center all text */
     margin-bottom: 2vh; /* Consistent bottom margin */
+    width: auto; /* Ensure no specified width causing overflow */
+    max-width: 100%; /* Prevent text from exceeding container */
 }
 
 .h2 {
-    font-size: 5vh; /* Adjusted for better visibility across devices */
+    font-size: 20vh; /* Adjusted for better visibility across devices */
+    text-align: center
+}
+.h3{
+    font-size: 20vh
 }
 
 .shareContainer {
     margin: 2vh auto; /* Centered with automatic margins */
     text-align: center;
-    width: 90vw; /* Slightly less than full width to accommodate padding */
+    width: 100%; /* Fit within container without causing overflow */
 }
 
 .icons button {
@@ -32,8 +39,8 @@
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 3rem; /* Increase the size of the icon */    
-    
+    font-size: 3rem; /* Increase the size of the icon */
+    width: auto; /* Ensure buttons do not exceed their content width */
 }
 
 .compatibility {
@@ -42,6 +49,7 @@
     align-items: center;
     width: 100vw;
     margin-top: 2vh; /* Space above compatibility section */
+    overflow: hidden; /* Prevent any child from causing horizontal overflow */
 }
 
 .compatibilityItem {
@@ -55,11 +63,12 @@
     box-shadow: 0 0.2vh 0.4vh rgba(0,0,0,0.1);
     width: 80vw; /* Width responsive to viewport */
     max-width: 500px; /* Maximum width to prevent oversizing on large screens */
+    overflow: hidden; /* Prevents content within items from overflowing */
 }
 
 .compatibilityImage {
-    width: 15vw; /* Adjusted for larger display */
-    max-width: 120px; /* Maximum width to maintain aesthetics */
+    width: 30vw; /* Adjusted for larger display */
+    max-width:300px; /* Maximum width to maintain aesthetics */
     height: auto;
     margin-bottom: 1vh;
 }

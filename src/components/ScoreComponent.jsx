@@ -66,13 +66,17 @@ const ScoreComponent = ({ score }) => {
 
     return (
         <div className={styles.container}>
-            <h2>Your Result:</h2>
+            <h2 style={{ textTransform: 'lowercase', textAlign: 'center' }}>
+    your result:<br />
+    {personality.type}
+</h2>
+
             <img src={pic1} className={styles.compatibilityImage} />
-            <h2>{personality.type}</h2>
+           
             <p className={styles.description}>{personality.blurb}</p>
 
             <div className={styles.shareContainer}>
-                <h3>Share Your Results:</h3>
+                <h3>share your results:</h3>
                 <div className={styles.icons}>
                     <button onClick={handleShareFacebook}><Facebook /></button>
                     <button onClick={handleShareLinkedIn}><LinkedIn /></button>
@@ -81,7 +85,7 @@ const ScoreComponent = ({ score }) => {
             </div>
 
             <div className={styles.compatibility}>
-                <h3>Your Compatibility With...</h3>
+                <h3>your compatibility with...</h3>
                 {personality.compatibilities.map((comp) => (
                     <div key={comp.type} className={styles.compatibilityItem}>
                         <img src={comp.imageUrl} alt={comp.type} className={styles.compatibilityImage} />

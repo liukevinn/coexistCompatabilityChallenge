@@ -154,6 +154,10 @@ const App = () => {
                 <LandingPageComponent onStartQuiz={() => setQuizStarted(true)} />
             ) : quizFinished ? (
                 <>
+                <Header 
+                        showBackButton={false}
+                        coexistUrl="https://getcoexist.com" 
+                    />
                     <ScoreComponent score={getTotalScore()} onStartQuiz={() => setQuizStarted(false)} />
                     
                     <div className="section">
