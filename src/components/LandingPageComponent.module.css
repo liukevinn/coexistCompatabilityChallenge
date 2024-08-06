@@ -11,6 +11,7 @@
     padding: 5vh; /* Adjusted padding to use vh */
     box-sizing: border-box;
     overflow: hidden; /* Ensures no overflow */
+    font-family: 'Lexend', sans-serif;
 }
 
 .content {

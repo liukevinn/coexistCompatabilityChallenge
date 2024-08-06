@@ -3,12 +3,10 @@
     flex-direction: column;
     align-items: center;
     padding: 2vh; /* Consistent scaling with viewport */
-    color: #333;
+    color: black; /* Set font color to black */
     background-color: #CCDBE6;
     width: 100vw; /* Full viewport width */
     margin: 0;
-    overflow-y: hidden; /* Hide vertical overflow */
-    overflow-x: hidden; /* Hide horizontal overflow */
     box-sizing: border-box; /* Includes padding and border in the element's total width and height */
 }
 
@@ -17,20 +15,25 @@
     margin-bottom: 2vh; /* Consistent bottom margin */
     width: auto; /* Ensure no specified width causing overflow */
     max-width: 100%; /* Prevent text from exceeding container */
+    color: black; /* Set font color to black */
 }
 
 .h2 {
     font-size: 20vh; /* Adjusted for better visibility across devices */
-    text-align: center
+    text-align: center;
+    color: black; /* Set font color to black */
 }
-.h3{
-    font-size: 20vh
+
+.h3 {
+    font-size: 20vh;
+    color: black; /* Set font color to black */
 }
 
 .shareContainer {
     margin: 2vh auto; /* Centered with automatic margins */
     text-align: center;
     width: 100%; /* Fit within container without causing overflow */
+    color: black; /* Set font color to black */
 }
 
 .icons button {
@@ -41,15 +44,26 @@
     cursor: pointer;
     font-size: 3rem; /* Increase the size of the icon */
     width: auto; /* Ensure buttons do not exceed their content width */
+    color: black; /* Set font color to black */
+}
+
+h1 {
+    font-size: 2.5vh; /* Responsive size based on viewport height */
+    color: black; /* Set font color to black */
+    text-align: center; /* Centering the title */
+    margin-top: 2vh; /* Space from the top */
+    margin-bottom: 2vh; /* Space before the content below */
+    font-family: "Lexend", sans-serif; /* Consistent typography */
 }
 
 .compatibility {
     display: flex;
+    background-color: #CCDBE6;
     flex-direction: column;
     align-items: center;
     width: 100vw;
-    margin-top: 2vh; /* Space above compatibility section */
     overflow: hidden; /* Prevent any child from causing horizontal overflow */
+    color: black; /* Set font color to black */
 }
 
 .compatibilityItem {
@@ -64,6 +78,7 @@
     width: 80vw; /* Width responsive to viewport */
     max-width: 500px; /* Maximum width to prevent oversizing on large screens */
     overflow: hidden; /* Prevents content within items from overflowing */
+    color: black; /* Set font color to black */
 }
 
 .compatibilityImage {

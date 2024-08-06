@@ -7,9 +7,7 @@
     font-family: 'Lexend', sans-serif;
 }
 
-.section {
-    margin-bottom: 2vh; /* Adjust this value to control spacing between sections */
-}
+
 
 .download-buttons-container {
     display: flex;

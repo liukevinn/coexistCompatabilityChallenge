@@ -48,7 +48,7 @@ const Header = ({
       </Typography>
       <Button 
         style={coexistButtonStyles} 
-        onClick={() => window.location.href = coexistUrl}
+        onClick={() => window.open(coexistUrl)}
       >
         <strong>coexist</strong>
       </Button>

@@ -4,14 +4,13 @@ import LandingPageComponent from './components/LandingPageComponent.jsx';
 import QuestionComponent from './components/QuestionComponent';
 import ScoreComponent from './components/ScoreComponent';
 import Header from './components/Header.jsx';
-import DownloadButtons from './components/DownloadButtons';
 import Blog from './components/Blog';
 
 // Images
 import pic1 from './pictures/265.Shopping-With-My-Dog.svg';
 import pic2 from './pictures/92.Savings.svg';
 import pic3 from './pictures/211. Coffee.svg';
-import pic4 from './pictures/18.Chilling.svg';
+import pic4 from './pictures/216. Nice-Dreams.svg'
 import pic5 from './pictures/236.Take-It.svg';
 import pic6 from './pictures/26.Nutritionist.svg';
 import pic7 from './pictures/122.Idea.svg';
@@ -86,48 +85,18 @@ const initialQuestions = [
     }
 ];
 
-// Function to shuffle an array
-const shuffleArray = (array) => {
-    let newArray = array.slice();
-    for (let i = newArray.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
-    }
-    return newArray;
-};
-
-// Shuffle the questions and their options
-const shuffleQuestionsAndOptions = (questions) => {
-    const shuffledQuestions = shuffleArray(questions).map((question) => {
-        const shuffledOptions = shuffleArray(
-            question.options.map((option, index) => ({
-                text: option,
-                points: question.points[index]
-            }))
-        );
-        return {
-            ...question,
-            options: shuffledOptions.map(option => option.text),
-            points: shuffledOptions.map(option => option.points)
-        };
-    });
-    return shuffledQuestions;
-};
 const App = () => {
     const [quizStarted, setQuizStarted] = useState(false);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [quizFinished, setQuizFinished] = useState(false);
-    const [questions, setQuestions] = useState([]);
+    const [questions, setQuestions] = useState(initialQuestions);
     const [selectedPoints, setSelectedPoints] = useState(new Array(initialQuestions.length).fill(0));
-
-    useEffect(() => {
-        setQuestions(shuffleQuestionsAndOptions(initialQuestions));
-    }, []);
 
     const handleAnswerSelected = (points) => {
         const updatedPoints = [...selectedPoints];
         updatedPoints[currentQuestionIndex] = points;
         setSelectedPoints(updatedPoints);
+        console.log(updatedPoints)
     };
 
     const getTotalScore = () => selectedPoints.reduce((acc, curr) => acc + curr, 0);
@@ -154,19 +123,15 @@ const App = () => {
                 <LandingPageComponent onStartQuiz={() => setQuizStarted(true)} />
             ) : quizFinished ? (
                 <>
-                <Header 
+                    <div className="section">
+                    <Header 
                         showBackButton={false}
                         coexistUrl="https://getcoexist.com" 
                     />
                     <ScoreComponent score={getTotalScore()} onStartQuiz={() => setQuizStarted(false)} />
-                    
-                    <div className="section">
-                        <DownloadButtons />
-                    </div>
-                    <div className="section">
+                        {/* <DownloadButtons /> */}
                         <Blog />
-                    </div>
-                   
+                    </div>           
                 </>
             ) : (
                 <>
@@ -177,8 +142,9 @@ const App = () => {
                     />
                     <QuestionComponent 
                         question={questions[currentQuestionIndex]} 
-                        onAnswerSelected={handleAnswerSelected} 
                         onNextQuestion={handleNextQuestion}
+                        onAnswerSelected={handleAnswerSelected}
+                        questionId={currentQuestionIndex + 1} 
                         onPreviousQuestion={handlePreviousQuestion}
                     />
                 </>
